@@ -40,6 +40,9 @@
 	
 	ArrayList<String> foodLikes = new ArrayList<String>();
 	foodLikes = (ArrayList<String>) request.getAttribute("foodLikes");
+	
+	ArrayList<String> foodId = new ArrayList<String>();
+	foodId = (ArrayList<String>) request.getAttribute("foodId");
 %>
 	
 	<form method="POST" action="ingredientToRecipe">
@@ -51,9 +54,7 @@
 		<!-- Creating a div for each value returned from servlet -->	
 		
 		
-		
-		
-		<button class="ingredientRecipe" name="ingredientRecipe" value="<%=foodTitle.get(i) %>">
+		<button class="ingredientRecipe" name="ingredientRecipe" value="<%=foodId.get(i) %>">
 		
 		
 			

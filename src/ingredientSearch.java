@@ -53,7 +53,7 @@ public class ingredientSearch extends HttpServlet {
 		
 		//System.out.println(ingredients);
 		//String apiUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=chicken,+flour,+eggs&number=2&apiKey=feb10bfb8d704aaa82674a48746efabc";
-		String apiUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + ingredients + "&number=100&apiKey=feb10bfb8d704aaa82674a48746efabc";
+		String apiUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + ingredients + "&number=100&limitLicense=true&apiKey=feb10bfb8d704aaa82674a48746efabc";
 		
 		
 		
@@ -61,7 +61,7 @@ public class ingredientSearch extends HttpServlet {
 				
 				.asJson();
 		
-		int resultsFound = apiResult.getBody().getArray().length();
+		int resultsFound = apiResult.getBody().getArray().length(); //returns all recipes found by ingredients
 		
 		
 		
@@ -86,18 +86,31 @@ public class ingredientSearch extends HttpServlet {
 			//out.println("<h3>This search has returned" + resultsFound + "+ result(s)</h3>");
 			
 			ArrayList<String> foodTitle = new ArrayList<String>(); //fill with all the titles
+			ArrayList<String> foodId = new ArrayList<String>();
 			ArrayList<String> imageUrl = new ArrayList<String>(); //fill with all image url's
 			ArrayList<String> foodLikes = new ArrayList<String>(); //fill with all likes and ratings of food
 			
-			
+			System.out.println("object of ingredeint list: "+apiResult.getBody().getArray().getJSONObject(0));
 			for(int i =0; i<resultsFound; i++) {
 				
 				foodTitle.add(foodTitleFormatter(apiResult.getBody().getArray().getJSONObject(i).get("title").toString()));
+				foodId.add(apiResult.getBody().getArray().getJSONObject(i).get("id").toString());
 				imageUrl.add(apiResult.getBody().getArray().getJSONObject(i).get("image").toString());
+				System.out.println("foodId at: " + i + foodId.get(i));
 				foodLikes.add(apiResult.getBody().getArray().getJSONObject(i).get("likes").toString());
 			}
 			
+			//to prevent issues further, only add titles that have result array != 0
+			
+			/*
+			 * after getting titles, create a recipe search api request using title name
+			 * only add titles that follow above rule
+			 */
+					
+			
+			
 			request.setAttribute("foodTitle", foodTitle);
+			request.setAttribute("foodId", foodId);
 			request.setAttribute("imageUrl", imageUrl);
 			request.setAttribute("foodLikes", foodLikes);
 			

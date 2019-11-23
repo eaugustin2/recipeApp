@@ -44,21 +44,41 @@ public class ingredientToRecipe extends HttpServlet {
 		String resultPage = "/recipeResultPage.jsp";
 		
 		
-		String recipe = request.getParameter("ingredientRecipe");
+		String recipeId = request.getParameter("ingredientRecipe");
+		System.out.println("recipeId is : " + recipeId);
 		
-		recipe = recipe.replace(" ", "+");
+		String complexInfoUrl = "https://api.spoonacular.com/recipes/"+recipeId+"/information?includeNutrition=false&apiKey=feb10bfb8d704aaa82674a48746efabc";
 		
-		String apiUrl = "https://api.spoonacular.com/recipes/search?query="+recipe+"&number=2&apiKey=feb10bfb8d704aaa82674a48746efabc";
+		HttpResponse<JsonNode> complexInfo = Unirest.get(complexInfoUrl).asJson();
+		
+		/*
+		 * 
+		 * Need to get image url, serving size, cook time, title, etc...
+		 */
+		
+		System.out.println(complexInfo.getBody().getObject());
+		
+		
+		String imageUrl = complexInfo.getBody().getObject().get("image").toString();
+		String servingSize = complexInfo.getBody().getObject().get("servings").toString();
+		String recipeTitle = complexInfo.getBody().getObject().get("title").toString();
+		String cookTime = complexInfo.getBody().getObject().get("readyInMinutes").toString();
+		
+		//recipe = recipe.replace(" ", "+");
+		//System.out.println("recipe after: " + recipe);
+		
+		/*
+		 * Searches recipe by recipe name
+		 */
+		//String apiUrl = "https://api.spoonacular.com/recipes/search?query="+recipe+"&number=10&instructionsRequired=true&apiKey=feb10bfb8d704aaa82674a48746efabc";
 		
 		
 		//Gets regular information about the recipe, pics etc...
-		HttpResponse<JsonNode> apiResult = Unirest.get(apiUrl)
-				
-				.asJson();
+		//HttpResponse<JsonNode> apiResult = Unirest.get(apiUrl).asJson(); //returns list of recipes searched by recipe name, to look for recipe id
 		
 		
 		
-		System.out.println("ID value: " + apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results").length()); //using this to parse the correct values for search by recipe
+		//System.out.println("ID value: " + apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results")); //using this to parse the correct values for search by recipe
 		
 		//if recipe id is not found redirect saying no steps... or bring to specific website
 		
@@ -67,6 +87,8 @@ public class ingredientToRecipe extends HttpServlet {
 		 */
 		
 		
+		
+		/*
 		if(apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results").length() == 0) {
 			out.println("This recipe does not contain an ID, refer to original recipe page...");
 			getServletContext()
@@ -74,24 +96,33 @@ public class ingredientToRecipe extends HttpServlet {
 			.include(request,response);
 			
 		}
-		
-		else {
+		*/
+		//else {
 			//recipeID is already accounted for
-			String recipeID =  apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results").getJSONObject(0).get("id").toString();
-			System.out.println("recipe id is: " + recipeID);
+			//String recipeID =  apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results").getJSONObject(0).get("id").toString();
+			//System.out.println("recipe id is: " + recipeID);
 			
 			/*
 			 * Needed values
 			 */
-			String imageUrl = apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results").getJSONObject(0).get("image").toString();
+			/*
+			String imageUrl = "https://spoonacular.com/recipeImages/" + apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results").getJSONObject(0).get("image").toString();
+			System.out.println("api Result " + apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results").getJSONObject(0));
 			String servingSize = apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results").getJSONObject(0).get("servings").toString();
 			String recipeTitle = apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results").getJSONObject(0).get("title").toString();
 			String cookTime = apiResult.getBody().getArray().getJSONObject(0).getJSONArray("results").getJSONObject(0).get("readyInMinutes").toString();
-			
+			*/
 			/*
 			 * Want to get missing ingredients and display next to inputted ingredients
 			 */
-			String recipeIngredientsUrl = "https://api.spoonacular.com/recipes/"+recipeID+"/ingredientWidget.json?apiKey=feb10bfb8d704aaa82674a48746efabc";
+		
+		/*
+		 * 
+		 * Got missing id, need to mesh with everything else
+		 * 
+		 * below is ingredients
+		 */
+			String recipeIngredientsUrl = "https://api.spoonacular.com/recipes/"+recipeId+"/ingredientWidget.json?apiKey=feb10bfb8d704aaa82674a48746efabc";
 			HttpResponse<JsonNode> recipeIngredients = Unirest.get(recipeIngredientsUrl).asJson();
 			
 			/*
@@ -108,7 +139,7 @@ public class ingredientToRecipe extends HttpServlet {
 			
 			
 			
-			String recipeStepsUrl = "https://api.spoonacular.com/recipes/"+recipeID+"/analyzedInstructions?apiKey=feb10bfb8d704aaa82674a48746efabc";
+			String recipeStepsUrl = "https://api.spoonacular.com/recipes/"+recipeId+"/analyzedInstructions?apiKey=feb10bfb8d704aaa82674a48746efabc";
 			
 			HttpResponse<JsonNode> recipeStepsApi = Unirest.get(recipeStepsUrl).asJson();
 			
@@ -161,7 +192,7 @@ public class ingredientToRecipe extends HttpServlet {
 			
 			
 		
-		}//end of outter else
+		//}//end of outter else
 		
 		
 		

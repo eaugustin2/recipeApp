@@ -175,6 +175,27 @@ Api results
 	border-bottom: 1px solid black;
 }
 
+/*
+recipeResultPage
+*/
+
+#imgHolder{
+	text-align: center;
+}
+
+#foodInfo{
+	font-family: Georgia;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.ingredientPhoto{
+	height:350px;
+	width:auto;
+}
+
+
 @media only screen and (max-width: 900px) {
   
   #stepsDiv{
