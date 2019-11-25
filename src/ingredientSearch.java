@@ -106,13 +106,17 @@ public class ingredientSearch extends HttpServlet {
 			 * after getting titles, create a recipe search api request using title name
 			 * only add titles that follow above rule
 			 */
-					
+				
+			int startIndex = 0;
+			int endIndex = 10;
 			
 			
 			request.setAttribute("foodTitle", foodTitle);
 			request.setAttribute("foodId", foodId);
 			request.setAttribute("imageUrl", imageUrl);
 			request.setAttribute("foodLikes", foodLikes);
+			request.setAttribute("start", startIndex);
+			request.setAttribute("end", endIndex);
 			
 			
 			

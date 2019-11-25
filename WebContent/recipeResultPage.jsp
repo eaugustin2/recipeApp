@@ -42,10 +42,12 @@
 			
 				
 				<!-- Try putting these two in their own div and using flexbox -->
+				<div id="foodLogistics">
+					<i class='far fa-clock'> <%=cookTime %> minutes</i>	
 				
-				<i class='far fa-clock'> <%=cookTime %> minutes</i>	
+					<i class='far fa-user-circle'> <%=servingSize %></i>
+				</div>
 				
-				<i class='far fa-user-circle'> <%=servingSize %></i>
 						 
 				
 		</div>

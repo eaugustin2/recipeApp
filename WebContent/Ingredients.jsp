@@ -13,6 +13,10 @@
 
 <%@ page import="java.util.ArrayList" %>
 
+	<div class="logoContainer">
+		<a class="logo" href="index.jsp">Foodle</a>
+	</div>
+
 	<div class="searchBar">
 	
 		<!-- Maybe put a header here, or not -->
@@ -43,19 +47,28 @@
 	
 	ArrayList<String> foodId = new ArrayList<String>();
 	foodId = (ArrayList<String>) request.getAttribute("foodId");
+	
+	
 %>
+
+	
 	
 	<form method="POST" action="ingredientToRecipe">
 <%	
+	int i = (Integer)request.getAttribute("start");
+	int end = (Integer)request.getAttribute("end");
+	
 	if(foodTitle != null){
-		for(int i =0; i<10;i++){
+		
+		//for(int i =0; i<10;i++){ 
+			while(i < end){
+			
 %>			
 
 		<!-- Creating a div for each value returned from servlet -->	
 		
 		
 		<button class="ingredientRecipe" name="ingredientRecipe" value="<%=foodId.get(i) %>">
-		
 		
 			
 			<div class="foodResults">
@@ -84,13 +97,14 @@
 	out.print("<br>");
 	
 %>
-
 			</div>	
 			
 			</button>
 			
 			
 <%	
+System.out.println(i);
+	i++;
 		}
 	}
 	
@@ -101,6 +115,24 @@
 	</div>
 	
 	
+	<!-- Could also make another servlet to send the data to the Ingredient Search and if there is a value from other servlet, use that as the start index, else use 0 -->
+	<div id="recipePages">
+		
+		<button id="prevPage">
+		 << previous
+		</button>
+	
+		<button id="nextPage">
+			next >> 
+		</button>
+	</div>
+	
+	<script>
+	var startIndex="<%=i%>";
+	var endIndex = "<%=end%>";	
+	</script>
+	
+	<script src="JavaScript/pages.js"></script>
 
 </body>
 </html>

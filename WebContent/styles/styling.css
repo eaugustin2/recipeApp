@@ -1,42 +1,3 @@
-#outerContainer{
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	
-}
-
-/*
-Get Started Div
-*/
-#searchDiv{
-	height: 400px;
-	width: 100%;
-	background-image: url('../photos/recipePic2.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-	position: relative;
-}
-
-.header{
-	margin-top:100px;
-	color:white;
-	font-family: Georgia,
-}
-
-.getStarted{
-	
-	text-align: center;
-}
-
-#getStartedButton{
-	background-color:green;
-	color:white;
-	height:auto;
-	width: auto;
-	cursor: pointer;
-	font-size: 17px;
-}
 
 /*
 Steps Div
@@ -98,7 +59,6 @@ Ingredients Page
 
 .searchBar{
 	text-align: center;
-	border-bottom: 1px solid lightgray;
 	height:50px;
 	width:auto;
 }
@@ -113,32 +73,44 @@ Ingredients Page
   padding: 6px 10px;
   margin-top: 8px;
   margin-right: 16px;
-  background-color: white;
+  background-color: saddlebrown;
   font-size: 17px;
   border: none;
   cursor: pointer;
+  border-radius: 7px;
+  color:white;
 }
 
 .ingredientSearchBox{
 	padding: 6px;
   border: solid .5px lightgray;
   margin-top: 8px;
-  margin-right: 16px;
   font-size: 16px;
   font-family: arial;
   width: 30%;
-  border-radius: 15px;
+  border-radius: 7px;
   outline:none;
 }
 
 /*
 Api results
 */
+
+.logoContainer{
+	text-align:center;
+}
+
+.logo{
+	font-size: 25px;
+	color: saddlebrown;
+	font-family: Arial;
+	text-decoration:none;
+}
+
 #searchResults{
 	display: flex;
 	flex-direction: column;
 }
-
 
 
 .foodResults{
@@ -149,32 +121,52 @@ Api results
 .foodFlexContainer{
 	display: flex;
 	flex-direction: row;
+	background-color:white;
+	outline:none;
+	border:none;
+	padding:0px;
+	border:none;
 }
 
-.foodFlexContainer:hover{
-	background-color:lightgray;
-}
+
 
 #foodContext{
 	float:right;
+	font-family: 50px;
 }
 
 .foodData{
 	float:left;
 	width:auto;
 	margin-left: 10px;
+	font-size: 17px;
 }
 
 .ingredientRecipe{
 	width:100%;
 	cursor: pointer;
+	background-color:white;
+	outline:none;
+	border: 1px solid lightgray;
+	border-radius: 7px;
+	margin:12px;
+}
+
+.ingredientRecipe:hover{
+	box-shadow: 10px 5px 10px 5px lightgray;
 }
 
 .foodData:hover{
-	color: gray;
 	border-bottom: 1px solid black;
 }
 
+#recipePages{
+	text-align: center;
+}
+
+#recipePages button{
+	margin: 10px;
+}
 /*
 recipeResultPage
 */
@@ -195,6 +187,23 @@ recipeResultPage
 	width:auto;
 }
 
+#foodLogistics{
+	display:flex;
+	flex-direction: row;
+	font-family: Georgia;
+	align-items: center;
+    justify-content: center;
+}
+
+i{
+	margin:0 5px;
+}
+
+li{
+	margin: 10px;
+	font-family: Georgia;
+	font-size: 17px;
+}
 
 @media only screen and (max-width: 900px) {
   

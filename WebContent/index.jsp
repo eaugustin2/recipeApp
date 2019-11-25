@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home Page</title>
+<title>Foodle - A recipe repository based on ingredients</title>
 
-<link rel="stylesheet" type="text/css" href="styles/styling.css">
+<link rel="stylesheet" type="text/css" href="styles/index.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -17,25 +17,36 @@
 
 
 <!-- Outer container to hold other divs, make direction column -->
+<div id="navBar">
+		<a id="logo" href="index.jsp">Foodle</a>
+		<a id="recipeLink" href="#">Recipes</a>
+	</div>
+
+
 <div id="outerContainer"> 
 
+	
 
 	<div id="searchDiv">
 		<h1 class="header">Create something good today!</h1>
-		<a href="Ingredients.jsp" class="getStarted"> <button id="getStartedButton">Get Started</button> </a>
+		
+		<!-- Have to make search bar bigger -->
+		 
+		 <div class="searchBar">
+		<!-- Maybe put a header here, or not -->
+		<form method="POST" action="ingredientSearch" class="searchForm">
+			<input type="text" results="5" placeholder="Search for all your favorite ingredients..." name="q" class="ingredientSearchBox" id="ingredientSearchBox">
+			<!-- <input type="submit" value="Add"> -->
+			<button type="submit"><i class="fa fa-search" id=""></i></button>
+		</form>
+	</div>
+		
 	</div>
 	<br>
 
 
 
-	<div class="searchBar">
-		<!-- Maybe put a header here, or not -->
-		<form method="POST" action="ingredientSearch" class="searchForm">
-			<input type="text" results="5" placeholder="Search for all your favorite ingredients" name="q" class="ingredientSearchBox">
-			<!-- <input type="submit" value="Add"> -->
-			<button type="submit"><i class="fa fa-search"></i></button>
-		</form>
-	</div>
+	
 	
 	<!-- Should have a featured section below here, possibly with javascript -->
 
