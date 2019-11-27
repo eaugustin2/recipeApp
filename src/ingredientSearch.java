@@ -107,9 +107,11 @@ public class ingredientSearch extends HttpServlet {
 			 * only add titles that follow above rule
 			 */
 				
-			int startIndex = 0;
-			int endIndex = 10;
 			
+			//check for value of request.getAttribute("..."); if null, assign startIndex 0, else assign value+=10
+			
+			int startIndex = 0;
+			int endIndex = 13;
 			
 			request.setAttribute("foodTitle", foodTitle);
 			request.setAttribute("foodId", foodId);
@@ -127,22 +129,6 @@ public class ingredientSearch extends HttpServlet {
 		
 		//have a button, if user presses to increase limiter of 10 per apge to 20, then so on...
 		
-		/*
-		for(int i =0; i<resultsFound; i++) {
-			//System.out.println("result is: " + apiResult.getBody().getArray().get(i));
-			//System.out.println("Food title name: " + apiResult.getBody().getArray().getJSONObject(i).get("title"));
-			//System.out.println("image url: " + apiResult.getBody().getArray().getJSONObject(i).get("image"));
-			//System.out.println("Food likes: " + apiResult.getBody().getArray().getJSONObject(i).get("likes").toString());
-		}
-		*/
-		
-		//Api string to get original name, now have to figure out how to put all results on regular page
-		//System.out.println("one of the ingredients: " + apiResult.getBody().getArray().getJSONObject(0).getJSONArray(" usedIngredients").getJSONObject(0).getString("originalName"));
-		//System.out.println("title name: " + apiResult.getBody().getArray().getJSONObject(0).get("title"));
-		
-		
-		
-		
 		
 	}
 	
@@ -155,59 +141,53 @@ public class ingredientSearch extends HttpServlet {
 	
 	protected String stringFormatter(String str) {
 		
-		str = str.replace("and", " ");
-		str = str.replace(",", " ");
-		str = str.replace("\\W", " ");
+		str = str.replaceAll("[^a-zA-Z0-9\\,]", "");
 		
-		//could possibly replace everything below with str = str.replace(" ", ",+");
+		StringBuilder newStr = new StringBuilder();
+		int start = 0;
+		int end = str.length()-1;
+		if(str.charAt(0)==32) {
+			int i =0;
+			while(str.charAt(i) == 32) {
+				i++;
+			}
+			start = i;
+		}
 		
+		if(str.charAt(str.length()-1)==32) {
+			int j =str.length()-1;
+			while(str.charAt(j)==32) {
+				j--;
+			}
+			end = j;
+		}
 		
-		//have to account if last variable is a space
-		int stringSize;
-		int counter =0;
-		
-		if(str.charAt(str.length()-1) == 32) {
-			System.out.println("Value at end is a space");
-			int k = str.length()-1;
-			while(str.charAt(k) == 32) {
-				k--;
-				counter++;
+		//finish rest from notebook
+		while(start<=end) {
+			if(str.charAt(start) == 32) {
+				newStr.append("-");
+				while(str.charAt(start) == 32) {
+					start++;
+				}
+				//newStr.append(str.charAt(start));
+			}
+			else if(str.charAt(start) == 44) {
+				//comma
+				newStr.append(",+");
+				while(str.charAt(start) == 44 || str.charAt(start) == 32) {
+					start++;
+				}
+			}
+			else {
+				newStr.append(str.charAt(start));
+				System.out.println("word: " + newStr.toString());
+				start++;
 			}
 		}
-		
-		if(counter != 0) {
-			stringSize = str.length()-counter;
-		}
-		else {
-			stringSize = str.length();
-		}
-		
-		
-		
-		System.out.println("Value of String size: " + stringSize + ", value of original length: " + str.length());
-		
-		
-		int i =0;
-	    StringBuilder strResult = new StringBuilder();
-
-	    while(i < stringSize){
-	      if(str.charAt(i)== 32){
-	        int j =i;
-	        while(j<stringSize && str.charAt(j) == 32){
-	          j++;
-	        }
-	        if(j<stringSize){
-	          strResult.append(",+");
-	          i =j;
-	        }
-	      
-	      }
-	      strResult.append(str.charAt(i));
-	      i++;
-	    }
-	    String result = new String(strResult);
-	    return result;
+		return newStr.toString();
 	}
+	
+	
 	
 	protected String foodTitleFormatter(String str) {
 		str = str.replace("\\W", "");

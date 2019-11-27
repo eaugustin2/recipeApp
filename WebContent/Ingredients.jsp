@@ -50,13 +50,12 @@
 	
 	
 %>
-
-	
-	
 	<form method="POST" action="ingredientToRecipe">
 <%	
 	int i = (Integer)request.getAttribute("start");
 	int end = (Integer)request.getAttribute("end");
+	
+	
 	
 	if(foodTitle != null){
 		
@@ -106,6 +105,9 @@
 System.out.println(i);
 	i++;
 		}
+			
+			request.setAttribute("start", i);
+			request.setAttribute("end",end);
 	}
 	
 
@@ -116,23 +118,19 @@ System.out.println(i);
 	
 	
 	<!-- Could also make another servlet to send the data to the Ingredient Search and if there is a value from other servlet, use that as the start index, else use 0 -->
-	<div id="recipePages">
-		
-		<button id="prevPage">
+	
+	<!--  
+	<form method="POST" action="pageNumbers">
+		<div id="recipePages">
+		<button id="prevPage" name="page" value="decrement">
 		 << previous
 		</button>
 	
-		<button id="nextPage">
+		<button id="nextPage" name="page" value="increment">
 			next >> 
 		</button>
 	</div>
-	
-	<script>
-	var startIndex="<%=i%>";
-	var endIndex = "<%=end%>";	
-	</script>
-	
-	<script src="JavaScript/pages.js"></script>
-
+	</form>
+	-->
 </body>
 </html>

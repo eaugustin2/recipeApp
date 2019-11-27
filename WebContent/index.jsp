@@ -28,17 +28,19 @@
 	
 
 	<div id="searchDiv">
-		<h1 class="header">Create something good today!</h1>
+		<h1 class="header">Create New Recipes with the Same Ingredients!</h1>
 		
 		<!-- Have to make search bar bigger -->
 		 
 		 <div class="searchBar">
+		 
 		<!-- Maybe put a header here, or not -->
 		<form method="POST" action="ingredientSearch" class="searchForm">
-			<input type="text" results="5" placeholder="Search for all your favorite ingredients..." name="q" class="ingredientSearchBox" id="ingredientSearchBox">
+			<input type="text" results="5" placeholder="Add all your favorite ingredients and search!" name="q" class="ingredientSearchBox" id="ingredientSearchBox">
 			<!-- <input type="submit" value="Add"> -->
 			<button type="submit"><i class="fa fa-search" id=""></i></button>
 		</form>
+		<h4 id="disclaimer">*Please separate ingredients by commas</h4>
 	</div>
 		
 	</div>

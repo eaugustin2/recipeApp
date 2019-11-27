@@ -32,7 +32,10 @@
 </head>
 <body>
 
-	<div id="imgHolder">
+
+
+	<div id="recipeHeader">
+		<div id="imgHolder">
 		
 		<img class ="ingredientPhoto"src="<%=imageUrl %>" alt = "<%=recipeTitle %>">
 	</div>
@@ -51,6 +54,9 @@
 						 
 				
 		</div>
+	</div>
+
+	
 	
 	
 	<div id="ingredients">

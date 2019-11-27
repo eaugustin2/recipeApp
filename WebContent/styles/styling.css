@@ -142,6 +142,8 @@ Api results
 	font-size: 17px;
 }
 
+
+
 .ingredientRecipe{
 	width:100%;
 	cursor: pointer;
@@ -154,6 +156,10 @@ Api results
 
 .ingredientRecipe:hover{
 	box-shadow: 10px 5px 10px 5px lightgray;
+}
+
+.ingredientRecipe:active{
+	color:lightgray;
 }
 
 .foodData:hover{
@@ -171,6 +177,11 @@ Api results
 recipeResultPage
 */
 
+#recipeHeader{
+	/*background: #ECECEC;*/
+	margin-top: 0px;
+}
+
 #imgHolder{
 	text-align: center;
 }
@@ -180,11 +191,13 @@ recipeResultPage
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+	
 }
 
 .ingredientPhoto{
 	height:350px;
 	width:auto;
+	border-radius: 80%;
 }
 
 #foodLogistics{
@@ -193,6 +206,7 @@ recipeResultPage
 	font-family: Georgia;
 	align-items: center;
     justify-content: center;
+    
 }
 
 i{
