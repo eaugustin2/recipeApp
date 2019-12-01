@@ -220,7 +220,6 @@ recipeResultPage
 	font-family: Georgia;
 	align-items: center;
     justify-content: center;
-    
 }
 
 i{
@@ -250,9 +249,32 @@ li{
   
 }
 
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 700px){
 	.foodData{
-		font-size: 13px;
+		font-size: 11px;
+	}
+	
+	.recipePicture{
+		width: 50%;
+		height:50%;
+	}
+	
+	.ingredientSearchBox{
+	width:75%;
+	}
+	
+	#buttonContainer{
+	display: flex;
+	flex-direction: row;
+	}
+	
+	.ingredientRecipe{
+	align-content:center;
+	}
+	
+	#navBar{
+	align-content:center;
+	text-align: center;
 	}
 }
 

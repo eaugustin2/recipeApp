@@ -36,9 +36,13 @@
 		 
 		<!-- Maybe put a header here, or not -->
 		<form method="POST" action="ingredientSearch" class="searchForm">
-			<input type="text" results="5" placeholder="Add all your favorite ingredients and search!" name="q" class="ingredientSearchBox" id="ingredientSearchBox">
-			<!-- <input type="submit" value="Add"> -->
-			<button type="submit"><i class="fa fa-search" id=""></i></button>
+		
+			<div id="buttonContainer">
+				<input type="text" results="5" placeholder="Add all your favorite ingredients and search!" name="q" class="ingredientSearchBox" id="ingredientSearchBox">
+				<!-- <input type="submit" value="Add"> -->
+				<button type="submit"><i class="fa fa-search" id=""></i></button>
+			</div>
+			
 		</form>
 		<h4 id="disclaimer">*Please separate ingredients by commas</h4>
 	</div>

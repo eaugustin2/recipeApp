@@ -1,0 +1,280 @@
+
+/*
+Steps Div
+*/
+
+#stepsDiv{
+	display: flex;
+	flex-direction: row;
+	
+	height: 300px;
+	width:100%;
+	color: sienna;
+	font-family: Georgia;
+	text-align: center;
+}
+
+.steps{
+	margin: 100px;
+	
+}
+
+/*
+Recipe Div
+*/
+
+#recipeDiv{
+	height:400px;
+	width: 100%;
+	background-color:saddlebrown;
+	margin-top: 100px;
+	color: white;
+	font-family: Georgia;
+}
+
+#recipeHeader{
+	margin-top: 100px;
+}
+
+#recipeForm{
+	margin-top: 100px;
+}
+
+#recipeTextBox{
+	height:23px;
+	width:auto;
+}
+
+#recipeSearch{
+	background-color:green;
+	color:white;
+	height:auto;
+	width: auto;
+	font-size:17px;
+}
+
+/*
+Ingredients Page
+*/
+
+.searchBar{
+	text-align: center;
+	height:50px;
+	width:auto;
+}
+
+.searchForm{
+	height:50px;
+	width: auto;
+}
+
+.searchBar button{
+	
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background-color: saddlebrown;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  color:white;
+}
+
+.ingredientSearchBox{
+	padding: 6px;
+  border: solid .5px lightgray;
+  margin-top: 8px;
+  font-size: 16px;
+  font-family: arial;
+  width: 30%;
+  border-radius: 7px;
+  outline:none;
+}
+
+#navBar{
+	background-color:white;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+
+/*
+Api results
+*/
+
+.logoContainer{
+	text-align:center;
+}
+
+.logo{
+	font-size: 25px;
+	color: saddlebrown;
+	font-family: Arial;
+	text-decoration:none;
+}
+
+#searchResults{
+	display: flex;
+	flex-direction: column;
+}
+
+
+.foodResults{
+	font-family: Georgia;
+}
+
+
+.foodFlexContainer{
+	display: flex;
+	flex-direction: row;
+	background-color:white;
+	outline:none;
+	border:none;
+	padding:0px;
+	border:none;
+}
+
+
+
+#foodContext{
+	float:right;
+	font-family: 50px;
+}
+
+.foodData{
+	float:left;
+	width:auto;
+	margin-left: 10px;
+	font-size: 17px;
+}
+
+
+
+.ingredientRecipe{
+	width:100%;
+	cursor: pointer;
+	background-color:white;
+	outline:none;
+	border: 1px solid lightgray;
+	border-radius: 7px;
+	margin:12px;
+}
+
+.ingredientRecipe:hover{
+	box-shadow: 10px 5px 10px 5px lightgray;
+}
+
+.ingredientRecipe:active{
+	color:lightgray;
+}
+
+.foodData:hover{
+	border-bottom: 1px solid black;
+}
+
+#recipePages{
+	text-align: center;
+}
+
+#recipePages button{
+	margin: 10px;
+}
+/*
+recipeResultPage
+*/
+
+#recipeHeader{
+	/*background: #ECECEC;*/
+	margin-top: 0px;
+}
+
+#imgHolder{
+	text-align: center;
+}
+
+#foodInfo{
+	font-family: Georgia;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	
+}
+
+.ingredientPhoto{
+	height:350px;
+	width:auto;
+	border-radius: 80%;
+}
+
+#foodLogistics{
+	display:flex;
+	flex-direction: row;
+	font-family: Georgia;
+	align-items: center;
+    justify-content: center;
+}
+
+i{
+	margin:0 5px;
+}
+
+li{
+	margin: 10px;
+	font-family: Georgia;
+	font-size: 17px;
+}
+
+@media only screen and (max-width: 900px) {
+  
+  #stepsDiv{
+  display:flex;
+  flex-direction:column;
+  }
+  
+  .steps{
+  margin: 25px;
+  }
+  
+  #recipeDiv{
+  margin-top: 500px;
+  }
+  
+}
+
+@media only screen and (max-width: 700px){
+	.foodData{
+		font-size: 11px;
+	}
+	
+	.recipePicture{
+		width: 50%;
+		height:50%;
+	}
+	
+	.ingredientSearchBox{
+	width:75%;
+	}
+	
+	#buttonContainer{
+	display: flex;
+	flex-direction: row;
+	}
+	
+	.ingredientRecipe{
+	align-content:center;
+	}
+	
+	#navBar{
+	align-content:center;
+	text-align: center;
+	}
+}
+

@@ -23,9 +23,14 @@
 	
 		<!-- Maybe put a header here, or not -->
 		<form method="POST" action="ingredientSearch">
+		
+		<div id="buttonContainer">
 			<input type="text" placeholder="Search Ingredients" name="q" class="ingredientSearchBox">
 			<!-- <input type="submit" value="Add"> -->
-			<button type="submit"><i class="fa fa-search"></i></button>
+			<button type="submit"><i class="fa fa-search" class="ingredientSearchButton"></i></button>
+		</div>
+		
+			
 		</form>
 	</div>
 </div>
@@ -81,7 +86,7 @@
 				
 				
 					<!-- Insert for img tag to put imageUrl as attribute for src -->
-					<img src ="<%=imageUrl.get(i) %>" alt="<%=foodTitle.get(i) %>" >
+					<img src ="<%=imageUrl.get(i) %>" alt="<%=foodTitle.get(i) %>"  class="recipePicture">
 			
 			
 			
