@@ -92,6 +92,20 @@ Ingredients Page
   outline:none;
 }
 
+#navBar{
+	background-color:white;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+
 /*
 Api results
 */
@@ -234,5 +248,11 @@ li{
   margin-top: 500px;
   }
   
+}
+
+@media only screen and (max-width: 900px){
+	.foodData{
+		font-size: 13px;
+	}
 }
 

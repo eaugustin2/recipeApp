@@ -43,6 +43,7 @@ public class ingredientSearch extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		String url ="/Ingredients.jsp";
+		String errorUrl = "/errorPage.jsp";
 		
 		
 		//make api call using ingredients that customer will enter
@@ -62,7 +63,7 @@ public class ingredientSearch extends HttpServlet {
 				.asJson();
 		
 		int resultsFound = apiResult.getBody().getArray().length(); //returns all recipes found by ingredients
-		
+		System.out.println("there were: " + resultsFound + " results found");
 		
 		
 		
@@ -71,7 +72,19 @@ public class ingredientSearch extends HttpServlet {
 		 * 
 		 */
 		
-		if(resultsFound == 0 || apiResult == null) {
+		/*
+		if(apiResult.getBody().getObject().get("code")!=null) {
+			int httpCode = (Integer)apiResult.getBody().getObject().get("code");
+			if(httpCode <200 || httpCode >=300) {
+				System.out.println("error: " + apiResult.getBody().getObject().get("message"));
+				getServletContext()
+					.getRequestDispatcher(errorUrl)
+					.forward(request, response);
+			}
+		}
+		*/
+		
+		 if(resultsFound == 0 || apiResult == null) {
 			System.out.println("This is null");
 			//output under search "Sorry this search yieled 0 results..."
 			out.println("<h2>Sorry this search yielded 0 results...</h2>");
@@ -79,6 +92,7 @@ public class ingredientSearch extends HttpServlet {
 			.getRequestDispatcher(url)
 			.include(request,response);
 		}
+		
 		
 		else {
 			//System.out.println("There were " + resultsFound + " results found");
@@ -110,15 +124,15 @@ public class ingredientSearch extends HttpServlet {
 			
 			//check for value of request.getAttribute("..."); if null, assign startIndex 0, else assign value+=10
 			
-			int startIndex = 0;
-			int endIndex = 13;
+			//int startIndex = 0;
+			//int endIndex = 13;
 			
 			request.setAttribute("foodTitle", foodTitle);
 			request.setAttribute("foodId", foodId);
 			request.setAttribute("imageUrl", imageUrl);
 			request.setAttribute("foodLikes", foodLikes);
-			request.setAttribute("start", startIndex);
-			request.setAttribute("end", endIndex);
+			//request.setAttribute("start", startIndex);
+			//request.setAttribute("end", endIndex);
 			
 			
 			
@@ -141,7 +155,8 @@ public class ingredientSearch extends HttpServlet {
 	
 	protected String stringFormatter(String str) {
 		
-		str = str.replaceAll("[^a-zA-Z0-9\\,]", "");
+		str = str.replaceAll("[^a-zA-Z0-9\\,\\s]", "");
+		System.out.println("after replace all: " + str);
 		
 		StringBuilder newStr = new StringBuilder();
 		int start = 0;

@@ -8,11 +8,13 @@
 <title>Search By Ingredients</title>
 <link rel="stylesheet" type="text/css" href="styles/styling.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
 
 <%@ page import="java.util.ArrayList" %>
 
+<div id="navBar">
 	<div class="logoContainer">
 		<a class="logo" href="index.jsp">Foodle</a>
 	</div>
@@ -26,6 +28,9 @@
 			<button type="submit"><i class="fa fa-search"></i></button>
 		</form>
 	</div>
+</div>
+
+	
 	
 	<br>
 
@@ -52,15 +57,15 @@
 %>
 	<form method="POST" action="ingredientToRecipe">
 <%	
-	int i = (Integer)request.getAttribute("start");
-	int end = (Integer)request.getAttribute("end");
+	//int i = (Integer)request.getAttribute("start");
+	//int end = (Integer)request.getAttribute("end");
 	
 	
 	
 	if(foodTitle != null){
 		
-		//for(int i =0; i<10;i++){ 
-			while(i < end){
+		for(int i =0; i<foodId.size();i++){ 
+			//while(i < end){
 			
 %>			
 
@@ -83,7 +88,8 @@
 					<div id="foodContext">
 						<h3 class="foodData"> <%=foodTitle.get(i) %> </h3>
 						<br>
-						<h4 class="foodData"> rating: <%=foodLikes.get(i) %>  </h4>
+						<h4 id="stars"> rating: <%=foodLikes.get(i) %>  </h4>
+						<span id="starOutput"></span>
 					</div>
 				</div>		
 
@@ -102,12 +108,12 @@
 			
 			
 <%	
-System.out.println(i);
-	i++;
+
+	
 		}
 			
-			request.setAttribute("start", i);
-			request.setAttribute("end",end);
+			//request.setAttribute("start", i);
+			//request.setAttribute("end",end);
 	}
 	
 
@@ -132,5 +138,7 @@ System.out.println(i);
 	</div>
 	</form>
 	-->
+	<script src="JavaScript/stickyNav.js"></script>
+	<script src="JavaScript/stars.js"></script>
 </body>
 </html>
