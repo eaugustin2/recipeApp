@@ -5,7 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Search By Ingredients</title>
+<%
+String ingredients = (String)request.getAttribute("userIngredients");
+%>
+<title>Recipes for: <%=ingredients %></title>
 <link rel="stylesheet" type="text/css" href="styles/styling.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -25,7 +28,7 @@
 		<form method="POST" action="ingredientSearch">
 		
 		<div id="buttonContainer">
-			<input type="text" placeholder="Search Ingredients" name="q" class="ingredientSearchBox">
+			<input type="text" placeholder="Search Ingredients" name="q" class="ingredientSearchBox" value="<%=ingredients %>">
 			<!-- <input type="submit" value="Add"> -->
 			<button type="submit"><i class="fa fa-search" class="ingredientSearchButton"></i></button>
 		</div>

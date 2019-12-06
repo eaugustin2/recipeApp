@@ -46,9 +46,9 @@
 				
 				<!-- Try putting these two in their own div and using flexbox -->
 				<div id="foodLogistics">
-					<i class='far fa-clock'> <%=cookTime %> minutes</i>	
+					<i class='far fa-clock'> <span class="foodLogColor"><%=cookTime %> minutes </span> </i>	
 				
-					<i class='far fa-user-circle'> <%=servingSize %></i>
+					<i class='far fa-user-circle'> <span class="foodLogColor"><%=servingSize %></span></i>
 				</div>
 				
 						 
@@ -70,6 +70,7 @@
 		%>
 			
 			<li> <%=ingredients.get(i) %> </li>
+
 		
 		<%
 			}

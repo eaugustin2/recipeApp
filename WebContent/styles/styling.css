@@ -110,6 +110,8 @@ Ingredients Page
 Api results
 */
 
+
+
 .logoContainer{
 	text-align:center;
 }
@@ -220,6 +222,7 @@ recipeResultPage
 	font-family: Georgia;
 	align-items: center;
     justify-content: center;
+    color: #e75204;
 }
 
 i{
@@ -231,6 +234,27 @@ li{
 	font-family: Georgia;
 	font-size: 17px;
 }
+
+ol li{
+	counter-increment: list;
+  	list-style-type: none;
+  	position: relative;
+}
+
+ol li:before {
+  color: #e75204;
+  content: counter(list) ".";
+  left: -32px;
+  position: absolute;
+  text-align: right;
+  width: 26px;
+}
+
+.foodLogColor{
+	color: black;
+}
+
+
 
 @media only screen and (max-width: 900px) {
   
@@ -260,6 +284,19 @@ li{
 	}
 	
 	.ingredientSearchBox{
+	width: 53%;
+	
+	}	
+	
+	#ingredientSearchBox{
+	width: 100%;
+	font-size: 100%;
+	}
+	
+	
+	/*
+	
+	.ingredientSearchBox{
 	width:75%;
 	}
 	
@@ -276,5 +313,8 @@ li{
 	align-content:center;
 	text-align: center;
 	}
+	
+	
+	*/
 }
 

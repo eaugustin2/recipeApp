@@ -6,7 +6,7 @@
 
 
 #logo, #recipeLink{
-	color: slategray;
+	color: white;
 	font-size: 20px;
 	font-family: Georgia;
 	margin: 10px;
@@ -22,24 +22,25 @@
 }
 
 #logo:hover, #recipeLink:hover{
-	color:white;
+	color:lightgray;
 }
 
 
 html{
-	
-	 background: url('../photos/recipePic2.jpg') no-repeat center center fixed; 
+	background: url('../photos/recipePic1.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+	 
 }
 
 .header{
-	margin-top:180px;
+	margin-top:150px;
 	color:white;
 	font-family: Georgia;
 	font-size: 50px;
+	
 }
 
 #disclaimer{
@@ -94,27 +95,31 @@ Ingredients Page
 	#buttonContainer{
 		display:flex;
 		flex-direction: column;
-	
 	}
 	*/
 	.header{
-	font-size: 22px;
+	font-size: 25px;
 	}
 	
 	.ingredientSearchBox{
 	width: 100%;
+	
 	}	
 	
 	#ingredientSearchBox{
 	width: 100%;
-	font-size: 9;
+	font-size: 100%;
 	}
 	
-	/*
+	
 	#buttonContainer{
 	display:flex;
 	flex-direction: row;
 	}
-	*/
+	
+	.searchBar button{
+	display:none;
+	}
+	
 }
 

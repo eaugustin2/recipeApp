@@ -48,6 +48,7 @@ public class ingredientSearch extends HttpServlet {
 		
 		//make api call using ingredients that customer will enter
 		String ingredients = request.getParameter("q");
+		request.setAttribute("userIngredients", ingredients);
 		System.out.println("ingredients before: " + ingredients);
 		ingredients = stringFormatter(ingredients);
 		System.out.println("ingredients after: " + ingredients);
